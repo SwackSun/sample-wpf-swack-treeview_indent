@@ -38,15 +38,21 @@
             </TreeView>
             <DataGrid x:Name="fileList"  Width="auto" Height="auto" Grid.Column="1"
                         VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                        GridLinesVisibility="Vertical" VerticalGridLinesBrush="Gray"
-                        ItemsSource="{Binding}" AutoGenerateColumns="false" SelectionUnit="CellOrRowHeader" SelectionMode="Single" IsReadOnly="True"
-                  CanUserSortColumns="False"  Margin="5" 
-                  CanUserResizeColumns="False" CanUserResizeRows="False"
-                  CanUserReorderColumns="False" AlternationCount="2"  RowHeaderWidth="0" CanUserAddRows="False">
+                        GridLinesVisibility="All"  VerticalGridLinesBrush="Gray"
+                        ItemsSource="{Binding}" AutoGenerateColumns="false" 
+                        SelectionUnit="CellOrRowHeader" SelectionMode="Single" IsReadOnly="True"
+                        CanUserSortColumns="False"  Margin="5" CanUserResizeColumns="False"
+                        CanUserResizeRows="False" CanUserReorderColumns="False" AlternationCount="2" 
+                        RowHeaderWidth="0" CanUserAddRows="False">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="文件名" Width="130" Binding="{Binding Path=Name,Mode=OneWay}"/>
+                    <DataGridTextColumn Header="文件名" Width="*" MaxWidth="150"  Binding="{Binding Path=Name,Mode=OneWay}"/>
                     <DataGridTextColumn Header="大小[kb]" Width="60" Binding="{Binding Path=Size,Mode=OneWay}" />
-                    <DataGridTextColumn Header="路径" Width="300" Binding="{Binding Path=Path,Mode=OneWay}"/>
+                    <DataGridTextColumn Header="路径" Width="*" Binding="{Binding Path=Path,Mode=OneWay}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

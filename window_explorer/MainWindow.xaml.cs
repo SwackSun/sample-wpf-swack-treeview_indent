@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -103,6 +104,41 @@ namespace window_explorer
             }
             this.fileList.ItemsSource = null;
             this.fileList.ItemsSource = filelist;
+        }
+        /// <summary>
+        /// 获取文本字符长度
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="fontSize"></param>
+        /// <param name="fontFamily"></param>
+        /// <returns></returns>
+        private double MeasureTextWidth(string text, double fontSize, string fontFamily)
+        {
+            FormattedText formattedText = new FormattedText(
+            text,
+            System.Globalization.CultureInfo.InvariantCulture,
+            FlowDirection.LeftToRight,
+            new Typeface(fontFamily.ToString()),
+            fontSize,
+            Brushes.Black
+            );
+            return formattedText.WidthIncludingTrailingWhitespace;
+        }
+        /// <summary>
+        /// 获取已安装字体
+        /// </summary>
+        private void getFonts()
+        {
+            System.Drawing.FontFamily[] fontFamilies;
+            InstalledFontCollection installedFontCollection = new InstalledFontCollection();
+            fontFamilies = installedFontCollection.Families;
+            int count = fontFamilies.Length;
+            Trace.Write("fontFamilies.Length=" + fontFamilies.Length);
+            for (int i = 0; i < count; i++)
+            {
+                string fontName = fontFamilies[i].Name;
+                Trace.Write("fontName: " + fontName);
+            }
         }
     }
 }
