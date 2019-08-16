@@ -26,9 +26,9 @@
                                             Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
                                             AncestorType={x:Type TreeViewItem}},
                                             Path=Header,
-                                            Converter={x:Static local:HeaderToImageConverter.Instance}}"
-                                        />
-                                        <TextBlock Text="{Binding}" Margin="{Binding Converter={StaticResource LeftMarginConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TreeViewItem}}}"/>
+                                            Converter={x:Static local:HeaderToImageConverter.Instance}}"/>
+                                        <TextBlock Text="{Binding}" Margin="{Binding Converter={StaticResource LeftMarginConverter},
+                                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TreeViewItem}}}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </Setter.Value>
